@@ -5,6 +5,9 @@ public class Libro {
 	String titulo;
 	String autor;
 	String id;
-	String rol;
+	Int año;
+	Int copias;
+	String lista;
+	
 	
 }
