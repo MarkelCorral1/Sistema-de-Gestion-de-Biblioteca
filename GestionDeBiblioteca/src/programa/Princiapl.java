@@ -3,8 +3,13 @@ package programa;
 public class Princiapl {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// Añadir usuarios
+		
+		
+		// Añadir libros
+		
+		
+		// Implementar menu
 
 	}
-
 }
