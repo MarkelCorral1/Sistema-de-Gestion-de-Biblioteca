@@ -14,5 +14,16 @@ public class Prestamo {
         this.usuario = usuario;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = null;
+        public String getIdPrestamo() {
+            return idPrestamo;
+        }
+
+        public Libro getLibro() {
+            return libro;
+        }
+
+        public Usuario getUsuario() {
+            return usuario;
+        }
     }
 }
