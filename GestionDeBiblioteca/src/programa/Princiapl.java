@@ -10,13 +10,16 @@ public class Princiapl {
 		
 		System.out.println("Bienvenido al sistema de gestion de la biblioteca.");
 		
-		boolean seguir = true;
 		
 		int contadorIDUsuario = 0;
 		int contadorUsuarioActual = 0;
-		
 		Usuario[] usuarios = new Usuario[10000];
 		
+		int contadorIDLibro = 0;
+		int contadorLibroActual = 0;
+		Libro[] libros = new Libro[10000];
+		
+		boolean seguir = true;
 		while (seguir)
 		{
 			System.out.println("¿Que desea hacer?");
@@ -67,6 +70,19 @@ public class Princiapl {
 				break;
 
 			case 2:
+				System.out.print("Titulo: ");
+				String tituloLibro = sc.nextLine();
+				
+				System.out.print("Autor: ");
+				String autorLibro = sc.nextLine();
+				
+				System.out.print("Año de publicacion: ");
+				int libroAñoPublicacion = sc.nextInt();
+				
+				System.out.print("Copias disponibles: ");
+				int libroCopiasDisponibles = sc.nextInt();
+				// Crear libro
+				libros[contadorLibroActual] = new Libro(tituloLibro, autorLibro, contadorIDLibro, libroAñoPublicacion, libroCopiasDisponibles);
 				
 				break;
 				
@@ -96,5 +112,6 @@ public class Princiapl {
 				break;
 			}
 		}
+		sc.close();
 	}
 }
