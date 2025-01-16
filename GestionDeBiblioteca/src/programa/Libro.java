@@ -3,12 +3,12 @@ package programa;
 public class Libro {
     private String titulo;
     private String autor;
-    private String id;
+    private int id;
     private int añoPublicacion;
     private int copiasDisponibles;
     private int reservas;
     
-    public Libro(String titulo, String autor, String id, int añoPublicacion, int copiasDisponibles) {
+    public Libro(String titulo, String autor, int id, int añoPublicacion, int copiasDisponibles) {
         this.titulo = titulo;
         this.autor = autor;
         this.id = id;
@@ -25,7 +25,7 @@ public class Libro {
         return autor;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
