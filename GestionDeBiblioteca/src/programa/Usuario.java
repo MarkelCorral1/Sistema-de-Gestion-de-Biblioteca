@@ -11,6 +11,10 @@ public Usuario(String nombre, String rol, int id) {
 	this.id = id;
 }
 
+public String getNombre() {
+    return nombre;
+}
+
 public void mostrarUsuarios(){
 	System.out.println("Id: " + id + "\tNombre: " + nombre + "\tRol: " + rol);
 }
