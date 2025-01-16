@@ -1,11 +1,13 @@
 package programa;
 import java.util.Date;
 public class Reserva {
+	// Atributos
     private String idReserva;
     private Usuario usuario;
     private Libro libro;
     private Date fechaReserva;
 
+    // Metodos
     public Reserva(String idReserva, Usuario usuario, Libro libro, Date fechaReserva) {
         this.idReserva = idReserva;
         this.usuario = usuario;
