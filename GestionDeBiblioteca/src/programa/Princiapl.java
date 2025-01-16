@@ -12,6 +12,11 @@ public class Princiapl {
 		
 		boolean seguir = true;
 		
+		int contadorIDUsuario = 0;
+		int contadorUsuarioActual = 0;
+		
+		Usuario[] usuarios = new Usuario[10000];
+		
 		while (seguir)
 		{
 			System.out.println("¿Que desea hacer?");
@@ -28,6 +33,36 @@ public class Princiapl {
 			switch (eleccion)
 			{
 			case 1:
+				System.out.print("Nombre: ");
+				String nombreUsuario = sc.nextLine();
+				
+				boolean seguirRol = true;
+				
+				String rol = "";
+				
+				while (seguirRol)
+				{
+					System.out.print("rol: ");
+					System.out.print("\t1. Estudiante");
+					System.out.print("\t2. Profesor");
+					System.out.print("\t3. Invitado");
+					int eleccionRol = sc.nextInt();
+					
+					if (eleccion == 1) {
+						rol = "estudiante";
+						seguirRol = false;
+					} else if (eleccion == 2) {
+						rol = "profesor";
+						seguirRol = false;
+					} else if (eleccion == 3) {
+						rol = "invitado";
+						seguirRol = false;
+					} else {
+						System.out.println("Opcion incorrecta, elija una opcion del 1 al 3.");
+					}
+				}
+				// Crear usuario
+				usuarios[contadorUsuarioActual] = new Usuario(nombreUsuario, rol, contadorIDUsuario);
 				
 				break;
 
