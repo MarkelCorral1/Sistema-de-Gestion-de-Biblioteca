@@ -27,5 +27,21 @@ public class Prestamo {
         public Usuario getUsuario() {
             return usuario;
         }
+        public String getFechaPrestamo() {
+            return fechaPrestamo;
+        }
+
+        public String getFechaDevolucion() {
+            return fechaDevolucion;
+        }
+
+        public void marcarDevolucion(String fechaDevolucion) {
+            this.fechaDevolucion = fechaDevolucion;
+        }
+        
+        public boolean estaDisponible() {
+            return libro.getCopiasDisponibles() > 0;
+        }
+       
     }
 
