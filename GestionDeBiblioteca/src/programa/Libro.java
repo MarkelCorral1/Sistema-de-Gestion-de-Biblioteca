@@ -1,7 +1,6 @@
 package programa;
 
 public class Libro {
-	public class Libro {
 	    String titulo;
 	    String autor;
 	    String id;
