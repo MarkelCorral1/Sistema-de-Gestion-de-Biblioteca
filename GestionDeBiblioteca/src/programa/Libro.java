@@ -74,4 +74,3 @@ public class Libro {
         return copiasDisponibles > 0;
     }
 }
-
