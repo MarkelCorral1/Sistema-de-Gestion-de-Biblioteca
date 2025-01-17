@@ -1,6 +1,11 @@
 # Sistema de Gestión de Biblioteca
 
-El sistema a desarrollar implementará las siguientes funcionalidades principales:
+El sistema a desarrollar contiene las siguientes clases
+  - Usuario
+  - Libro
+  - Prestamo
+  - Reserva
+  - Principal
 
 ## 1. **Gestión de Usuarios**
 **Registrar usuarios** con los siguientes datos:
@@ -80,16 +85,17 @@ Al **devolver un libro**, liberar la primera reserva en la lista.
 
 
 ## 5. **Programa Principal**
-Implementar un **menú interactivo** que permita al usuario realizar todas las acciones mencionadas.
+Implementar un **menú interactivo** que permita al usuario realizar las acciones que se pueden ver debajo.
 **Registrar las operaciones realizadas** y mostrarlas como un **log en pantalla**.
+
 El menu cuenta con las siguientes opciones
 
-- Registrar usuarios
-- Registrar libros
-- Realizar préstamos
-- Realizar devoluciones
-- Cancelar reservas
-- Consultar registros
+- Registrar usuarios (Con nombre y rol)
+- Registrar libros (Con titulo, autor, año de publicacion y copias disponibles)
+- Realizar préstamos (Dando datos del libro a prestar, a que usuario y la fecha del prestamo, con opción de reservarlo si no hay copias)
+- Realizar devoluciones (Dando datos del usuario, libro a devolver. Si no quedaban copias, automaticamente se le pasa al primero del array de reservas)
+- Cancelar reservas (Dando datos del usuario, libro a quitar reserva)
+- Consultar registros (Mostrando sus atributos)
   - Mostrar usuarios
   - Mostrar libros
   - Mostrar préstamos
