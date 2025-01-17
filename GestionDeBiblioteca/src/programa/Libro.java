@@ -6,7 +6,7 @@ public class Libro {
     private int id;
     private int añoPublicacion;
     private int copiasDisponibles;
-    private int reservas;
+    private Reserva[] listaReservas;
     
     public Libro(String titulo, String autor, int id, int añoPublicacion, int copiasDisponibles) {
         this.titulo = titulo;
@@ -14,7 +14,7 @@ public class Libro {
         this.id = id;
         this.añoPublicacion = añoPublicacion;
         this.copiasDisponibles = copiasDisponibles;
-        this.reservas = 0;
+        listaReservas = new Reserva[10000];
     }
 
     public String getTitulo() {
@@ -37,37 +37,58 @@ public class Libro {
         return copiasDisponibles;
     }
 
-    public int getReservas() {
-        return reservas;
+    public Reserva[] getlistaReservas() {
+        return listaReservas;
     }
 
-    public void registrarReserva() {
-        if (copiasDisponibles > 0) {
-            reservas++;
-            copiasDisponibles--;
-            System.out.println("Reserva registrada. Copias restantes: " + copiasDisponibles);
-        } else {
-            System.out.println("No hay copias disponibles para reserva.");
-        }
+    public void prestarCopia() {
+        copiasDisponibles--;
     }
 
-    public void eliminarReserva() {
-        if (reservas > 0) {
-            reservas--;
-            copiasDisponibles++;
-            System.out.println("Reserva eliminada. Copias disponibles: " + copiasDisponibles);
-        } else {
-            System.out.println("No hay reservas para eliminar.");
-        }
+    public void devolverCopia() {
+        copiasDisponibles++;
+    }
+    
+    public int cantidadReservas() {
+    	int cantidadReservas = 0;
+    	
+        for (int i = 0; i < listaReservas.length; i++) {
+        	if (listaReservas[i] != null) {
+        		cantidadReservas++;
+        	} else {
+        		break;
+        	}
+		}
+        
+        return cantidadReservas;
+	}
+    
+    public void agregarReserva(Reserva reserva) {
+        for (int i = 0; i < listaReservas.length; i++) {
+			if (listaReservas[i] == null) {
+				listaReservas[i] = reserva;
+			}
+		}
     }
 
+    public void liberarReserva() {
+        listaReservas[0] = null;
+        
+        for (int i = 0; i < listaReservas.length; i++) {
+        	listaReservas[i] = listaReservas[i + 1];
+        	if (listaReservas[i] == null) {
+        		break;
+        	}
+		}
+    }
+    
     public void mostrarDetalles() {
         System.out.println("Título: " + titulo);
         System.out.println("Autor: " + autor);
         System.out.println("ID: " + id);
         System.out.println("Año de publicación: " + añoPublicacion);
         System.out.println("Copias disponibles: " + copiasDisponibles);
-        System.out.println("Reservas actuales: " + reservas);
+        System.out.println("Reservas actuales: " + cantidadReservas());
     }
 
     public boolean hayCopiasDisponibles() {
