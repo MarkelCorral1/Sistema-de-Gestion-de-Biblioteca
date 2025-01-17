@@ -9,25 +9,27 @@ public class Princiapl {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Bienvenido al sistema de gestion de la biblioteca.");
-
+		// Crear array de usuarios
 		int contadorIDUsuario = 0;
 		int contadorUsuarioActual = 0;
 		Usuario[] usuarios = new Usuario[10000];
-
+		// Crear array de libros
 		int contadorIDLibro = 0;
 		int contadorLibroActual = 0;
 		Libro[] libros = new Libro[10000];
-
+		// Crear array de prestamos
 		int contadorIDPrestamo = 0;
 		int contadorPrestamoActual = 0;
 		Prestamo[] prestamos = new Prestamo[10000];
-
+		// Crear array de reservas
 		int contadorIDReserva = 0;
 		int contadorReservaActual = 0;
 		Reserva[] reservas = new Reserva[10000];
 
 		boolean seguir = true;
 		while (seguir) {
+			
+			// Menu //
 			System.out.println("¿Que desea hacer?");
 			System.out.println("\t1. Registrar usuarios");
 			System.out.println("\t2. Registrar libros");
@@ -42,7 +44,7 @@ public class Princiapl {
 
 			switch (eleccion) {
 			case 1:
-				// Crear usuario
+				// Crear usuario //
 				System.out.print("Nombre: ");
 				String nombreUsuario = sc.nextLine();
 
@@ -50,7 +52,7 @@ public class Princiapl {
 
 				String rol = null;
 				int maxLibrosPrestados = 0;
-
+				// Seleccionar rol
 				while (seguirRol) {
 					System.out.print("rol: ");
 					System.out.print("\t1. Estudiante");
@@ -58,7 +60,7 @@ public class Princiapl {
 					System.out.print("\t3. Invitado");
 					int eleccionRol = sc.nextInt();
 					sc.nextLine();
-
+					// Aplicar sus valores de limite
 					if (eleccionRol == 1) {
 						rol = "estudiante";
 						maxLibrosPrestados = 3;
@@ -84,7 +86,8 @@ public class Princiapl {
 				break;
 
 			case 2:
-				// Crear libro
+				
+				// Crear libro //
 				System.out.print("Titulo: ");
 				String tituloLibro = sc.nextLine();
 
@@ -107,12 +110,13 @@ public class Princiapl {
 				break;
 
 			case 3:
-				// Realizar prestamo
+				
+				// Realizar prestamo //
 				Libro libroPrestamo = null;
 				int nLibroEnArray = 0;
 
 				boolean seguirLibroPrestamo = true;
-
+				// Elegir libro
 				while (seguirLibroPrestamo) {
 					System.out.println("Titulo del libro: ");
 					String libroBuscar = sc.nextLine();
@@ -139,7 +143,7 @@ public class Princiapl {
 				int nUsuarioEnArray = 0;
 
 				boolean seguirUsuarioPrestamo = true;
-
+				// Elegir usuario
 				while (seguirUsuarioPrestamo) {
 					System.out.println("Nombre del usuario: ");
 					String usuarioBuscar = sc.nextLine();
@@ -167,7 +171,7 @@ public class Princiapl {
 				if (!usuarioPrestamo.puedeRealizarPrestamo()) {
 					System.out.println("ERROR: El usuario ha llegado al limite de libros prestados");
 				} else if (!libroPrestamo.hayCopiasDisponibles()) {
-					// Realizar reserva
+					// Realizar reserva //
 					System.out.println("No hay libros disponibles, deseas reservarlo? (s/n)");
 					String respuestaReservar = sc.nextLine();
 
@@ -195,11 +199,12 @@ public class Princiapl {
 				break;
 
 			case 4:
-				// Realizar devolucion
+				
+				// Realizar devolucion //
 				int nUsuarioEnArray1 = 0;
 
 				boolean seguirUsuarioDevolucion = true;
-
+				// Elegir usuario
 				while (seguirUsuarioDevolucion) {
 					System.out.println("Nombre del usuario: ");
 					String usuarioBuscar = sc.nextLine();
@@ -222,7 +227,7 @@ public class Princiapl {
 				}
 
 				boolean tieneLibro = false;
-
+				// Elegir libro
 				System.out.println("Libros disponibles del usuario: ");
 				// Mostrar libros del usuario
 				for (int i = 0; i < usuarios[nUsuarioEnArray1].getLibrosPrestados().length; i++) {
@@ -290,13 +295,14 @@ public class Princiapl {
 				break;
 
 			case 5:
-				// Cancelar reservas
+				
+				// Cancelar reservas //
 				System.out.print("De que usuario deseas cancelar las reservas:");
 				Usuario usuarioCancelarReserva = null;
 				int nUsuarioEnArray2 = 0;
 
 				boolean seguirUsuarioCancelarReserva = true;
-
+				// Elegir usuario
 				while (seguirUsuarioCancelarReserva) {
 					System.out.println("Nombre del usuario: ");
 					String usuarioBuscar = sc.nextLine();
@@ -337,7 +343,7 @@ public class Princiapl {
 						}
 					}
 				}
-
+				// Reserva a borrar
 				if (hayReserva) {
 					System.out.println("Cual reserva desea borrar (numero)");
 					int reservaEliminar = sc.nextInt() - 1;
@@ -351,6 +357,8 @@ public class Princiapl {
 				break;
 
 			case 6:
+				
+				// Menu registros //
 				System.out.println("¿Que desea hacer?");
 				System.out.println("\t1. Mostrar usuarios");
 				System.out.println("\t2. Mostrar libros");
@@ -407,12 +415,16 @@ public class Princiapl {
 				break;
 
 			case 7:
+				
+				// Salir //
 				seguir = false;
 				System.out.println("Saliendo del sistema de gestion de biblioteca.");
 
 				break;
 
 			default:
+				
+				// Opcion no valida //
 				System.out.println("Opcion incorrecta, elija una opcion del 1 al 7.");
 				break;
 			}
