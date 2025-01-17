@@ -1,5 +1,7 @@
 package programa;
 
+import java.util.Arrays;
+
 public class Usuario {
 	private String nombre;
 	private String rol;
@@ -24,9 +26,11 @@ public class Usuario {
 		return librosPrestados;
 	}
 
-	public void mostrarUsuarios() 
-	{
-		System.out.println("Id: " + id + "\tNombre: " + nombre + "\tRol: " + rol);
+	
+
+	@Override
+	public String toString() {
+		return "Usuario [nombre: " + nombre + ", rol: " + rol + ", id: " + id + "]";
 	}
 
 	public void agregarLibro(Libro libro) 
@@ -46,7 +50,7 @@ public class Usuario {
 	{
 		for (int i = 0; i < librosPrestados.length; i++) 
 		{
-			if (librosPrestados[i] == libro) 
+			if (librosPrestados[i].getTitulo().equals(libro.getTitulo())) 
 			{
 				librosPrestados[i].devolverCopia();
 				librosPrestados[i] = null;

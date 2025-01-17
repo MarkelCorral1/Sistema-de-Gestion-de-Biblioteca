@@ -28,4 +28,16 @@ public class Reserva {
     public String getFechaReserva() {
         return fechaReserva;
     }
+    
+    public void cancelarReserva(Reserva reserva) {
+    	reserva.libro.liberarReserva(reserva);
+	}
+
+	@Override
+	public String toString() {
+		return "Reserva [idReserva: " + idReserva + ", usuario: " + usuario + ", libro: " + libro + ", fechaReserva: "
+				+ fechaReserva + "]";
+	}
+    
+    
 }

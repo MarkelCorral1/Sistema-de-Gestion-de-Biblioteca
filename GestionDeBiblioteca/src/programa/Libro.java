@@ -1,5 +1,7 @@
 package programa;
 
+import java.util.Arrays;
+
 public class Libro {
     private String titulo;
     private String autor;
@@ -49,6 +51,15 @@ public class Libro {
         copiasDisponibles++;
     }
     
+    // Si hay gente con reservas, se las agrega como prestamo (Si hay huecos disponibles)
+    public void devolverCopia(Usuario usuario) {
+        copiasDisponibles++;
+        
+        if (listaReservas[0] != null) {
+        	usuario.agregarLibro(this);
+        }
+    }
+    
     public int cantidadReservas() {
     	int cantidadReservas = 0;
     	
@@ -67,31 +78,41 @@ public class Libro {
         for (int i = 0; i < listaReservas.length; i++) {
 			if (listaReservas[i] == null) {
 				listaReservas[i] = reserva;
+				break;
 			}
 		}
     }
 
-    public void liberarReserva() {
-        listaReservas[0] = null;
-        
-        for (int i = 0; i < listaReservas.length; i++) {
-        	listaReservas[i] = listaReservas[i + 1];
-        	if (listaReservas[i] == null) {
-        		break;
-        	}
+	public void liberarReserva(Reserva reserva) 
+	{
+		// Bucle para liberar reserva
+		for (int i = 0; i < listaReservas.length; i++) 
+		{
+			if (listaReservas[i].getIdReserva() == reserva.getIdReserva())
+			{
+				listaReservas[i] = null;
+				break;
+			}
 		}
-    }
-    
-    public void mostrarDetalles() {
-        System.out.println("Título: " + titulo);
-        System.out.println("Autor: " + autor);
-        System.out.println("ID: " + id);
-        System.out.println("Año de publicación: " + añoPublicacion);
-        System.out.println("Copias disponibles: " + copiasDisponibles);
-        System.out.println("Reservas actuales: " + cantidadReservas());
-    }
+		// Bucle para ordenar la lista (los que son null los mete al final)
+		for (int i = 0; i < listaReservas.length - 1; i++) {
+			if (listaReservas[i] == null)
+			{
+				listaReservas[i] = listaReservas[i + 1];
+				listaReservas[i + 1] = null;
+			}
+		}
+	}
 
     public boolean hayCopiasDisponibles() {
         return copiasDisponibles > 0;
     }
+
+	@Override
+	public String toString() {
+		return "Libro [titulo: " + titulo + ", autor: " + autor + ", id: " + id + ", añoPublicacion: " + añoPublicacion
+				+ ", copiasDisponibles: " + copiasDisponibles + "]";
+	}
+    
+    
 }
